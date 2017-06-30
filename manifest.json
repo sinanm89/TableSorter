@@ -23,7 +23,8 @@
 "name":"Hide Wiki nav bar",
 "description":"
   Hide the nav bar on dwarffortress wiki so that the 176px of screen estate is regained.
-  Icon made by Gregor Cresnar, from www.flaticon.com
+
+  Credits and Source code : https://github.com/sinanm89/Wiki-NavBar-Toggle
 ",
 "version":"1",
 "manifest_version":2,
