@@ -21,7 +21,7 @@
 "author": "Sinan Midillili",
 
 "name":"Hide Wiki nav bar",
-"description":"Hide the nav bar on dwarffortress wiki so that the 176px of screen estate is regained. You can also use this with other wiki pages that have the similar style. Credits and Source code : https://github.com/sinanm89/Wiki-NavBar-Toggle",
+"description":"Hide the nav bar on dwarffortress wiki so screen estate is regained. Credits and source: github.com/sinanm89/Wiki-NavBar-Toggle",
 "version":"0.0.0.1",
 "manifest_version":2,
 "icons": {
