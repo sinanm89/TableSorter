@@ -20,8 +20,8 @@
 
 "author": "Sinan Midillili",
 
-"name":"Hide Wiki nav bar",
-"description":"Hide the nav bar on almost all wiki pages and the annoying search bar on youtube so screen is less cluttered and neater. Credits and source: github.com/sinanm89/Wiki-NavBar-Toggle",
+"name":"Flip Estate",
+"description":"Hide the nav bar on almost all wiki pages and the search bar on youtube so screen is less cluttered and neater. Credits and source: github.com/sinanm89/Wiki-NavBar-Toggle",
 "version":"0.0.0.2",
 "manifest_version":2,
 "icons": {
