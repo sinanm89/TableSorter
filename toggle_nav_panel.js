@@ -12,3 +12,13 @@ if (document.title.indexOf("Wiki") != -1) {
       document.getElementById("mw-panel").style.visibility = "hidden";
     }
 }
+
+if (document.title.indexOf("YouTube") != -1) {
+  if (document.getElementById("yt-masthead-container").style.display != "none"){
+    document.getElementById("yt-masthead-container").style.display = "none";
+    document.getElementById("masthead-positioner-height-offset").style.display = "none";
+  } else {
+    document.getElementById("yt-masthead-container").style.display = "block";
+    document.getElementById("masthead-positioner-height-offset").style.display = "block";
+  }
+}
