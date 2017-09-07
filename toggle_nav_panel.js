@@ -12,7 +12,15 @@ if (document.title.indexOf("Wiki") != -1) {
       document.getElementById("mw-panel").style.visibility = "hidden";
     }
 }
-
+if (document.title.indexOf("reddit") != -1) {
+  display_setting = document.getElementsByClassName("side")[0].style.display;
+  if (display_setting != "none"){
+    display_setting = document.getElementsByClassName("side")[0].style.display = "none";
+  } else {
+    display_setting = document.getElementsByClassName("side")[0].style.display = "block";
+  }
+}
+// deprecated but here for old theme usability
 if (document.title.indexOf("YouTube") != -1) {
   if (document.getElementById("yt-masthead-container").style.display != "none"){
     document.getElementById("yt-masthead-container").style.display = "none";

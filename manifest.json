@@ -3,13 +3,6 @@
     "http://*/*",
     "https://*/*"
 ],
-"content_scripts": [
-    {
-      "matches": ["*://*/*"],
-      "js": ["toggle_nav_panel.js"]
-    }
-  ],
-
 "background": {
     "scripts": ["background.js"],
     "persistent": false
@@ -17,12 +10,18 @@
 "browser_action": {
   "default_icon": "fold.png"
 },
-
+"commands": {
+  "_execute_browser_action": {
+    "suggested_key": {
+      "default": "Ctrl+Shift+E",
+      "mac": "Ctrl+Shift+E"
+    }
+  }
+},
 "author": "Sinan Midillili",
-
 "name":"Flip Estate",
-"description":"Hide the nav bar on almost all wiki pages and the search bar on youtube so screen is less cluttered and neater.",
-"version":"0.0.1.0",
+"description":"Hide sidebars on Reddit, Wikipedia, Youtube so there isnt useless white space. Toggle by clicking on Icon or Command/Ctrl+Shift+E",
+"version":"0.0.2.0",
 "manifest_version":2,
 "icons": {
   "16": "fold.png",
