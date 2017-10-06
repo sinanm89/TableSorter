@@ -1,6 +1,6 @@
 var url = window.location.host;
 
-if (url.indexOf("Wiki") != -1) {
+if (url.indexOf("wiki") != -1) {
     if (document.getElementById("content").style.marginLeft === "0px") {
       document.getElementById("content").style.marginLeft = "176px";
     }
@@ -14,6 +14,7 @@ if (url.indexOf("Wiki") != -1) {
       document.getElementById("mw-panel").style.visibility = "hidden";
     }
 }
+
 if (url.indexOf("reddit") != -1) {
   var side = document.getElementsByClassName("side")[0];
   var content = document.getElementById("siteTable").parentElement;
@@ -25,13 +26,15 @@ if (url.indexOf("reddit") != -1) {
     content.style.width = "inherit";
   }
 }
-// deprecated but here for old theme usability
-if (url.indexOf("YouTube") != -1) {
-  if (document.getElementById("yt-masthead-container").style.display != "none"){
-    document.getElementById("yt-masthead-container").style.display = "none";
-    document.getElementById("masthead-positioner-height-offset").style.display = "none";
+
+if (url.indexOf("facebook") != -1) {
+  if (document.getElementById("leftCol").style.display != "none"){
+    document.getElementById("leftCol").style.display = "none";
+    document.getElementById("rightCol").style.display = "none";
+    document.getElementById("mainContainer").style.margin = "0 30% 0 30%";
   } else {
-    document.getElementById("yt-masthead-container").style.display = "block";
-    document.getElementById("masthead-positioner-height-offset").style.display = "block";
+    document.getElementById("leftCol").style.display = "block";
+    document.getElementById("rightCol").style.display = "block";
+    document.getElementById("mainContainer").style.margin = "inherit";
   }
 }
