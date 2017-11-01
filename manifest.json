@@ -10,8 +10,6 @@
 "content_scripts": [{
     "matches": ["*://*/*"],
     "js": ["onload.js"]
-    // default is document_idle
-    // "run_at": "document_end"
 }],
 "browser_action": {
   "default_icon": "fold.png"
@@ -25,10 +23,11 @@
   }
 },
 "author": "Sinan Midillili",
-"name":"Flip Estate",
-"description":"Hide the sidebars on Reddit, Wikipedia, Facebook to save screen-estate. Toggle by clicking on Icon or Command/Ctrl+Shift+E",
-"version":"0.0.3.0",
-"manifest_version":2,
+"name":"Navbar Toggle",
+"short_name": "NBT",
+"description": "Hide the sidebars on Reddit, Wikipedia, FB and Youtube to save screen-estate. Toggle by clicking on Icon or Command/Ctrl+Shift+E",
+"version":"0.1.0.0",
+"manifest_version": 2,
 "icons": {
   "16": "fold.png",
   "48": "fold.png",
