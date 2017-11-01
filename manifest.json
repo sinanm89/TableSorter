@@ -9,8 +9,9 @@
 },
 "content_scripts": [{
     "matches": ["*://*/*"],
-    "js": ["onload.js"],
-    "run_at": "document_end"
+    "js": ["onload.js"]
+    // default is document_idle
+    // "run_at": "document_end"
 }],
 "browser_action": {
   "default_icon": "fold.png"
