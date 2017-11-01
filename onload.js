@@ -1,8 +1,4 @@
 // Run script at the end of page load/refresh.
-// window.addEventListener ("load", function(){
-
-
-console.log('LOADED');
 var url = window.location.host;
 if (url.indexOf("wiki") != -1) {
     chrome.storage.sync.get("flip_estate_wiki", toggle_wikipedia);
@@ -75,5 +71,3 @@ function toggle_wikipedia(value) {
       document.getElementById("mw-panel").style.display = "none";
     }
 }
-
-// }, false);
