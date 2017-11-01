@@ -1,4 +1,8 @@
 // Run script at the end of page load/refresh.
+// window.addEventListener ("load", function(){
+
+
+console.log('LOADED');
 var url = window.location.host;
 if (url.indexOf("wiki") != -1) {
     chrome.storage.sync.get("flip_estate_wiki", toggle_wikipedia);
@@ -9,7 +13,10 @@ if (url.indexOf("reddit") != -1) {
 }
 
 if (url.indexOf("youtube") != -1) {
-    chrome.storage.sync.get("flip_estate_youtube", toggle_youtube);
+    var observer = new MutationObserver(function (m) {
+        chrome.storage.sync.get("flip_estate_youtube", toggle_youtube);
+    });
+    observer.observe(document.body, {childList: false});
 }
 
 if (url.indexOf("facebook") != -1) {
@@ -41,11 +48,15 @@ function toggle_reddit(value) {
 }
 
 function toggle_youtube(value) {
+    console.log(value);
   var content = document.getElementById("masthead-container");
+  var video = document.getElementById("page-manager");
   if (!value.flip_estate_youtube){
     content.style.display = "none";
+    video.style.marginTop = "0px";
   } else {
     content.style.display = "";
+    video.style.marginTop = "56px";
   }
 }
 
@@ -64,3 +75,4 @@ function toggle_wikipedia(value) {
     }
 }
 
+// }, false);

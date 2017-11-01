@@ -9,6 +9,7 @@ if (url.indexOf("reddit") != -1) {
 }
 
 if (url.indexOf("youtube") != -1) {
+  // no need for a mutation observer because this mutation is called by user
   chrome.storage.sync.get("flip_estate_youtube", toggle_youtube);
 }
 
@@ -48,11 +49,15 @@ function toggle_youtube(value) {
   value = !value.flip_estate_youtube;
   chrome.storage.sync.set({"flip_estate_youtube": value});
   var content = document.getElementById("masthead-container");
+  var video = document.getElementById("page-manager");
   if (!value){
     content.style.display = "none";
+    video.style.marginTop = "0px";
   } else {
     content.style.display = "";
+    video.style.marginTop = "56px";
   }
+  console.log(value);
 }
 
 function toggle_wikipedia(value) {
