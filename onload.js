@@ -16,7 +16,8 @@ if (url.indexOf("youtube") != -1) {
     var observer = new MutationObserver(function (m) {
         chrome.storage.sync.get("flip_estate_youtube", toggle_youtube);
     });
-    observer.observe(document.body, {childList: false});
+    // all the childs have to be loaded as well...
+    observer.observe(document.body, {childList: true});
 }
 
 if (url.indexOf("facebook") != -1) {
