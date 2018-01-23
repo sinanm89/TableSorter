@@ -1,11 +1,14 @@
-chrome.browserAction.onClicked.addListener(function (tab) {
-    chrome.tabs.executeScript(tab.ib, {
-        file: 'toggle_nav_panel.js'
-    });
-});
 
-chrome.commands.onCommand.addListener(function(command) {
-    chrome.tabs.executeScript(tab.ib, {
-        file: 'toggle_nav_panel.js'
-    });
+chrome.browserAction.onClicked.addListener(function (tab) { //Fired when User Clicks ICON
+    // if (tab.url.indexOf("https://www.google.co.in/") != -1) { // Inspect whether the place where user clicked matches with our list of URL
+        // chrome.tabs.executeScript(tab.id, {
+        //     "file": "contentscript.js"
+        // }, function () { // Execute your code
+        //     console.log("Script Executed .. "); // Notification on Completion
+        // });
+    // }
+    
+  chrome.tabs.executeScript(tab.ib, {
+        file: 'onload.js'
+  });
 });

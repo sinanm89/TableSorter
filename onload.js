@@ -1,73 +1,31 @@
-// Run script at the end of page load/refresh.
-var url = window.location.host;
-if (url.indexOf("wiki") != -1) {
-    chrome.storage.sync.get("flip_estate_wiki", toggle_wikipedia);
+   
+// (function readTable() {
+console.log('I AM TRYING TO READ TABLES ON PAGE');
+// Get a value
+document.getElementsByClassName('ng-scope selected adsDashTreeButton')[0].click();
+// get key columns
+var column_key_names = document.querySelectorAll('[id^=gridcolumn-] span');
+var output = [];
+// get values of each column
+console.log(column_key_names);
+for(let j=0; j<column_key_names.length-1; j++){
+  let col_val = column_key_names[j].innerText;
+  output.push(col_val);
 }
 
-if (url.indexOf("reddit") != -1) {
-    chrome.storage.sync.get("flip_estate_reddit", toggle_reddit);
-}
-
-if (url.indexOf("youtube") != -1) {
-    var observer = new MutationObserver(function (m) {
-        chrome.storage.sync.get("flip_estate_youtube", toggle_youtube);
-    });
-    // all the childs have to be loaded as well...
-    observer.observe(document.body, {childList: true});
-}
-
-if (url.indexOf("facebook") != -1) {
-    chrome.storage.sync.get("flip_estate_facebook", toggle_facebook);
-}
-
-function toggle_facebook(value) {
-  if (!value.flip_estate_facebook){
-    document.getElementById("leftCol").style.display = "none";
-    document.getElementById("rightCol").style.display = "none";
-    document.getElementById("mainContainer").style.margin = "0 30% 0 30%";
-  } else {
-    document.getElementById("leftCol").style.display = "";
-    document.getElementById("rightCol").style.display = "";
-    document.getElementById("mainContainer").style.margin = "inherit";
-  }
-}
-
-function toggle_reddit(value) {
-  var side = document.getElementsByClassName("side")[0];
-  var content = document.getElementById("siteTable").parentElement;
-  if (!value.flip_estate_reddit){
-    side.style.display = "none";
-    content.style.width = "100vw";
-  } else {
-    side.style.display = "";
-    content.style.width = "inherit";
-  }
-}
-
-function toggle_youtube(value) {
-    console.log(value);
-  var content = document.getElementById("masthead-container");
-  var video = document.getElementById("page-manager");
-  if (!value.flip_estate_youtube){
-    content.style.display = "none";
-    video.style.marginTop = "0px";
-  } else {
-    content.style.display = "";
-    video.style.marginTop = "56px";
-  }
-}
-
-function toggle_wikipedia(value) {
-    console.log("the current wiki value is " + value);
-  if (!value.flip_estate_wiki) {
-      document.getElementById("content").style.marginLeft = "176px";
+var column_values = document.querySelectorAll('[id^=treeview-] tbody tr td');
+// seek out children, go deep.
+for(let i=0; i<column_values.length-1; i++){
+    if(i !== 0 && (i%column_key_names.length) !== 0){
+      let col_val = column_values[j].innerText;
+      output.append(col_val);
+    // } else {
+      // output.append('\n')
     }
-    else {
-      document.getElementById("content").style.marginLeft = "0px";
-    }
-    if (!value.flip_estate_wiki) {
-      document.getElementById("mw-panel").style.display = "";
-    } else {
-      document.getElementById("mw-panel").style.display = "none";
-    }
+    
 }
+// Save it using the Chrome extension storage API.
+chrome.storage.sync.set({'page_data': output}, function() {
+  // Notify that we saved.
+  console.log('Settings saved');
+});
