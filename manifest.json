@@ -46,13 +46,14 @@
   
   "permissions": [
     "storage",
-    "tabs"
+    "tabs",
+    "activeTab"
   ],
-  "content_scripts": [{
-      "matches": ["*://*/*"],
-      "js": ["onload.js"]
-      // "run_at": "document_end"
-  }],
+  // "content_scripts": [{
+  //     "matches": ["*://*/*"],
+  //     "js": ["onload.js"]
+  //     // "run_at": "document_end"
+  // }],
   // "app": {
   // "background": {
   //     "scripts": ["background.js"],
