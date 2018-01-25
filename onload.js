@@ -9,36 +9,34 @@ document.getElementsByClassName('ng-scope selected adsDashTreeButton')[0].click(
 
 var column_key_names = document.querySelectorAll("[id^=gridcolumn-] span.x-column-header-text");
 
-var output = ['Name'];
-var key_names = [];
+var row_datas = [];
+var key_columns = [{title: 'Name'},];
 
 // get values of each column
-
-for(let j=0; j<column_key_names.length; j++){
-  output.push(column_key_names[j].textContent);
+for(let j=0; j<column_key_names.length; j++){ 
+  key_columns.push({ title: column_key_names[j].textContent });
 }
 
-// var column_values = document.querySelectorAll('[id^=treeview-] tbody tr td div span:not(.x-tree-node-text)');
 
 var column_values = document.querySelectorAll('tbody [id^=treeview-]');
 
-for(var i=0; i<column_values.length+1; i++){
-    // if(i !== 0 && (i%column_key_names.length+1) !== 0){
-      for(let j=0; j<column_values[i].querySelectorAll("td").length+1; j++){        
-
-        let val = column_values[i].querySelectorAll("td")[j] ? column_values[i].querySelectorAll("td")[j].textContent : "";
-        output.push(val);
-    }
+for(var i=0; i<column_values.length; i++){
+  var row = [];
+  var collapsed_row = column_values[i].querySelectorAll("td");
+  for(let j=0; j <= collapsed_row.length; j++){        
+    let val = collapsed_row[j] ? collapsed_row[j].textContent : "";
+    row.push(val);
+  }
+  row_datas.push(row);
 }
-console.log(output);
-var results = {
+
+// Save it using the Chrome extension storage API, no need to sync
+chrome.storage.local.set({
   'page_data':{
-    'elements': output,
-    'column_size': column_key_names.length + 1
-}};
-// Save it using the Chrome extension storage API.
-chrome.storage.local.set(results, function() {
+    'rows_datas': row_datas,
+    'key_columns': key_columns
+}}, function() {
   // Notify that we saved.
-  console.log('Settings saved');
+  console.log('Scraped page & saved.');
 
 });
