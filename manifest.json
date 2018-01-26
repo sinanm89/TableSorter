@@ -1,10 +1,9 @@
 {
   "author": "Sinan Midillili",
-  "name": "Appd Table Parser",
-  "description": "Get the data output from appd and sort better",
-  "version": "0.1",
+  "name": "Parse and export tables",
+  "description": "Be able to export a table as csv or have multiline sorting",
+  "version": "0.1.0",
   "manifest_version": 2,
-  
   "permissions": [
     "storage",
     "tabs",

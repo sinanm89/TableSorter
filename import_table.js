@@ -1,12 +1,7 @@
    
-// (function readTable() {
-console.log('I AM TRYING TO SAVE THE TABLES ON THE PAGE');
-// Get a value
+// Click the expand tree button
 document.getElementsByClassName('ng-scope selected adsDashTreeButton')[0].click();
-// get key columns
-
-// document.querySelectorAll('tbody [id^=treeview-]')[0].querySelectorAll("td")[6].textContent
-
+// get table labels
 var column_key_names = document.querySelectorAll("[id^=gridcolumn-] span.x-column-header-text");
 
 var row_datas = [];
@@ -16,12 +11,12 @@ var key_columns = [{title: 'Name'},];
 for(let j=0; j<column_key_names.length; j++){ 
   key_columns.push({ title: column_key_names[j].textContent });
 }
-
-
+// get table data
 var column_values = document.querySelectorAll('tbody [id^=treeview-]');
 
 for(var i=0; i<column_values.length; i++){
   var row = [];
+  // select all the rows that're nested under each row
   var collapsed_row = column_values[i].querySelectorAll("td");
   for(let j=0; j <= collapsed_row.length; j++){        
     let val = collapsed_row[j] ? collapsed_row[j].textContent : "";
@@ -29,7 +24,6 @@ for(var i=0; i<column_values.length; i++){
   }
   row_datas.push(row);
 }
-
 // Save it using the Chrome extension storage API, no need to sync
 chrome.storage.local.set({
   'page_data':{

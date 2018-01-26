@@ -1,5 +1,4 @@
-var url = window.location.host;
-
+// var url = window.location.host;
 // if (url.indexOf("appd") != -1) {
   // chrome.storage.sync.get("flip_estate_wiki", toggle_wikipedia);
 // }
@@ -8,11 +7,12 @@ var url = window.location.host;
   // chrome.storage.sync.set({"flip_estate_wiki": value});
 var query = { active: true, currentWindow: true };
 var sometab;
-function callback(tabs) {
-  var currentTab = tabs[0]; // there will be only one in this array
+function create_tables(tabs) {
+  // there will be only one in this array
+  var currentTab = tabs[0];
   
   chrome.tabs.executeScript(currentTab.id, {
-        file: 'onload.js'
+        file: 'import_table.js'
   }, function(tabs) {
     chrome.storage.local.get({'page_data': {} }, function(page_data) {
       console.log('READING FROM STORAGE');
@@ -28,9 +28,14 @@ function callback(tabs) {
           data: rows_datas,
           columns: key_cols,
           paging:   false,
+          buttons: [
+            'csv'
+            // 'pdf'
+            // 'excel'
+          ]
       });
 
     });
   });
 }
-chrome.tabs.query(query, callback);
+chrome.tabs.query(query, create_tables);
